@@ -1,160 +1,46 @@
-# EBS Sentinel DFIR X
+# EBS Sentinel DFIR X Pro v5
 
-Advanced Android DFIR (Digital Forensics & Incident Response), Threat Hunting, Mobile EDR and Active Response Platform.
+Mobil adli bilişim, Android ADB analizi, threat hunting ve aktif müdahale aracı.
 
-## Features
-
-### Device Forensics
-
-* Android device acquisition via ADB
-* Device metadata collection
-* Security patch analysis
-* System access auditing
-
-### Application Analysis
-
-* Installed application inventory
-* Permission analysis
-* Risk scoring engine
-* Application categorization
-
-### Network Intelligence
-
-* Socket analysis
-* Remote endpoint identification
-* Country detection
-* ASN and company attribution
-* Threat intelligence enrichment
-
-### Crash & Log Analysis
-
-* Logcat monitoring
-* Crash detection
-* Suspicious activity classification
-* Real-time forensic alerts
-
-### Threat Hunting
-
-* IOC searching
-* Custom hunt queries
-* Timeline correlation
-* Attack surface discovery
-
-### Mobile EDR
-
-* Active response actions
-* Force-stop applications
-* Suspend / Unsuspend packages
-* Process termination
-* Background restriction controls
-
-### Threat Intelligence
-
-* IOC correlation
-* MITRE ATT&CK mapping
-* Risk scoring
-* Threat classification
-
-### Evidence Management
-
-* Evidence locker
-* SHA256 hashing
-* APK extraction
-* Case management
-
-### Reporting
-
-* HTML forensic reports
-* Timeline generation
-* Risk summaries
-* Investigation artifacts
-
----
-
-## Screenshots
-
-Add screenshots here.
-
----
-
-## Requirements
-
-* Python 3.10+
-* Android Debug Bridge (ADB)
-* PySide6
-
-Install dependencies:
+## Çalıştırma
 
 ```bash
 pip install -r requirements.txt
+python main.py
 ```
 
----
+Windows için `run_windows.bat` kullanılabilir.
 
-## Usage
+## v5 Eklenen Modüller
 
-Connect an Android device:
+- IOC & Threat Intelligence Center
+- MITRE ATT&CK eşleştirme
+- Offline IP ülke / firma / ASN zenginleştirme
+- Ağ / Socket ekranında ülke ve firma kolonları
+- Live Device Map
+- Threat Hunting Workspace
+- YARA benzeri basit APK/izin kural motoru
+- VirusTotal için SHA256 tabanı hazır alan
+- AI Threat Analyst heuristic özet motoru
+- Permission Risk Matrix
+- Mobile EDR kural motoru
+- Attack Simulator / Lab senaryoları
+- Session Recorder
+- Evidence / case sistemiyle aksiyon kaydı
 
-```bash
-adb devices
+## IP Ülke/Firma Verisi
+
+Varsayılan olarak bilinen büyük ağlar offline eşleştirilir: Google, Microsoft, Cloudflare, Meta, Telegram, Apple, Fastly vb.
+Daha hassas sonuç için `assets/geoip.csv` dosyası eklenebilir.
+
+CSV formatı:
+
+```csv
+prefix,country,company,asn
+45.158.57.0/24,TR,Example Hosting,AS00000
 ```
 
-Run:
+## Güvenlik Notu
 
-```bash
-python ebs_sentinel.py
-```
-
----
-
-## Project Structure
-
-```text
-core/
- ├── adb_client.py
- ├── device_info.py
- ├── app_analyzer.py
- ├── network_analyzer.py
- ├── log_analyzer.py
- ├── system_access.py
- ├── process_monitor.py
- ├── active_response.py
- ├── evidence_locker.py
- ├── risk_engine.py
- ├── timeline.py
- ├── report_generator.py
- ├── threat_intel.py
- └── advanced_features.py
-
-main.py
-```
-
----
-
-## Capabilities
-
-* Android Forensics
-* Threat Hunting
-* Mobile EDR
-* Incident Response
-* Threat Intelligence
-* YARA Analysis
-* Live Log Monitoring
-* Evidence Collection
-* Timeline Analysis
-
----
-
-## Disclaimer
-
-This project is intended for authorized security research, incident response, digital forensics and defensive security operations.
-
-Use only on systems and devices for which you have explicit authorization.
-
----
-
-## License
-
-MIT License
-
-Copyright (c) 2026 EBS Cyber Security
+Bu araç yalnızca cihaz sahibinin rızasıyla, yetkili adli analiz / güvenlik incelemesi için kullanılmalıdır.
+`force-stop` geçici durdurma içindir. `suspend` hassas uygulamalarda dikkatli kullanılmalıdır.
